@@ -1,0 +1,18 @@
+
+setInterval(function () {
+    $.ajax({
+        url: "static/data.json",
+        dataType: "json",
+        success: function (data) {
+            var outputElement = document.getElementById("msg");
+            outputElement.innerHTML = data.msg;
+            var anml = document.getElementById('anm');
+            anml.innerHTML ="";
+            data.anm.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                anml.appendChild(li);
+            });
+        }
+    })
+}, 1000)
